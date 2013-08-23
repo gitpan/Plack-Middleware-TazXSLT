@@ -17,26 +17,12 @@ sub read_file {
 my $backend = sub {
     my $env     = shift;
     my $request = Plack::Request->new($env);
-    my $uri     = $request->uri;
-    if ($uri eq 'http://example.com/01.xml') {
+    my $path     = $request->uri->path;
+    if ( -e  "$Bin/documents/$path" ) {
         return [
             200,
             [ 'Content-Type', 'text/xml' ],
-            [ read_file("$Bin/documents/01.xml") ]
-        ];
-    }
-    elsif ($uri eq 'http://example.com/01_no_pi.xml') {
-        return [
-            200,
-            [ 'Content-Type', 'text/xml' ],
-            [ read_file("$Bin/documents/01_no_pi.xml") ]
-        ];
-    }
-    elsif ($uri eq 'http://example.com/01.xsl') {
-        return [
-            200,
-            [ 'Content-Type', 'text/xml' ],
-            [ read_file("$Bin/documents/01.xsl") ]
+            [ read_file("$Bin/documents/$path") ]
         ];
     }
     else {
@@ -65,6 +51,14 @@ test_psgi $app, sub {
     is( $res->code, 200 );
     is( $res->content, qq{<?xml version="1.0"?>\nbar\n} );
     is( $res->content_length, 26);
+};
+
+test_psgi $app,  sub { 
+	my $cb  = shift;
+        my $res = $cb->( GET 'http://example.com/change_http_status.xml', [ Host => 'www.example.com' ] );
+    	is( $res->code, 204 );
+    	is( $res->content, qq{<?xml version="1.0"?>\nbar\n} );
+    	is( $res->content_length, 26 );
 };
 
 done_testing();
