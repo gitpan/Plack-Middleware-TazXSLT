@@ -19,7 +19,7 @@ use Plack::Util;
 
 use constant TAZ_XSLT_PROFILE => $ENV{TAZ_XSLT_PROFILE};
 
-our $VERSION = '0.51';
+our $VERSION = '0.52';
 
 sub HTTP::Response::to_psgi {
     my ($self) = @_;
@@ -213,6 +213,8 @@ sub find_pi {
 
 sub register_elements {
     my ( $self, $xslt_dom, $xml_dom ) = @_;
+
+    $xslt_dom->register_element( 'http://www.mod-xslt2.com/ns/1.0', 'header-set', sub { return; } );
 
     $xslt_dom->register_function( 'http://taz.de/xmlns/tazxslt/http_response',
         'header',

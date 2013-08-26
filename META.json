@@ -45,7 +45,7 @@
    "provides" : {
       "Plack::Middleware::TazXSLT" : {
          "file" : "lib/Plack/Middleware/TazXSLT.pm",
-         "version" : "0.51"
+         "version" : "0.52"
       }
    },
    "release_status" : "stable",
@@ -57,7 +57,7 @@
          "url" : "https://github.com/mdom/Plack-Middleware-TazXSLT"
       }
    },
-   "version" : "0.51",
+   "version" : "0.52",
    "x_test_requires" : {
       "Carp" : "0",
       "HTTP::Request" : "0",
