@@ -20,7 +20,7 @@ name: Plack-Middleware-TazXSLT
 provides:
   Plack::Middleware::TazXSLT:
     file: lib/Plack/Middleware/TazXSLT.pm
-    version: '0.53'
+    version: '0.54'
 requires:
   Capture::Tiny: '0'
   HTTP::Message::PSGI: '0'
@@ -38,4 +38,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: https://github.com/mdom/Plack-Middleware-TazXSLT
-version: '0.53'
+version: '0.54'
