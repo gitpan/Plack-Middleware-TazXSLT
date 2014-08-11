@@ -35,7 +35,7 @@
             "Try::Tiny" : "0",
             "URI::QueryParam" : "0",
             "XML::LibXML" : "0",
-            "XML::LibXSLT" : "0",
+            "XML::LibXSLT" : "1.72",
             "parent" : "0"
          }
       },
@@ -51,7 +51,7 @@
    "provides" : {
       "Plack::Middleware::TazXSLT" : {
          "file" : "lib/Plack/Middleware/TazXSLT.pm",
-         "version" : "0.54"
+         "version" : "0.55"
       }
    },
    "release_status" : "stable",
@@ -63,5 +63,5 @@
          "url" : "https://github.com/mdom/Plack-Middleware-TazXSLT"
       }
    },
-   "version" : "0.54"
+   "version" : "0.55"
 }
